@@ -1,0 +1,1 @@
+export 'package:sellerapp/infrastructure/navigation/bindings/controllers/home.controller.binding.dart'; 
