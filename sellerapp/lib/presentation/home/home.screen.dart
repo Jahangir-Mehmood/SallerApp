@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 
+import '../../consts/colors.dart';
+import '../../consts/styles.dart';
 import 'controllers/home.controller.dart';
 
 class HomeScreen extends GetView<HomeController> {
@@ -9,15 +10,25 @@ class HomeScreen extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('HomeScreen'),
-        centerTitle: true,
-      ),
-      body: const Center(
-        child: Text(
-          'HomeScreen is working',
-          style: TextStyle(fontSize: 20),
-        ),
+      bottomNavigationBar: Column(
+        children: [
+          Obx(() {
+            return Expanded(child: controller.navBody.elementAt(controller.currentIndex.value));
+          }),
+          Obx(() {
+            return BottomNavigationBar(
+              currentIndex: controller.currentIndex.value,
+              type: BottomNavigationBarType.fixed,
+              backgroundColor: whiteColor,
+              selectedItemColor: redColor,
+              selectedLabelStyle: const TextStyle(fontFamily: semibold),
+              items: controller.navItems,
+              onTap: (value) {
+                controller.currentIndex.value = value;
+              },
+            );
+          }),
+        ],
       ),
     );
   }
