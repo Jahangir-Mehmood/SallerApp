@@ -46,3 +46,13 @@ const womenClothing = 'Women Clothing',
     jewelery = 'Jewelery',
     cellphone = 'Cellphone & Tab',
     furniture = 'Furniture';
+
+// ITEM DETAIL SCREEN /////////////
+const video = 'Video',
+    reviews = 'Rewiews',
+    sellerpolicy = 'Seller Policy',
+    returnpolicy = 'Return Policy',
+    supportpolicy = 'Sopport Policy',
+    productsyoumaylike = 'Products you may also like';
+
+const wishlist = 'My Wishlist', order = 'My Order', messages = 'Messages';
