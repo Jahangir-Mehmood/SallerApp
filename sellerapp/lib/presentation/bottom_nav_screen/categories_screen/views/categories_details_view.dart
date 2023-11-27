@@ -10,7 +10,9 @@ class CategoriesDetailsView extends GetView {
   @override
   Widget build(BuildContext context) {
     return bgWidget(Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text(title),
+      ),
     ));
   }
 }
