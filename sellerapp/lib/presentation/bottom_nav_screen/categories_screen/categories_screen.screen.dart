@@ -11,30 +11,21 @@ class CategoriesScreenScreen extends GetView<CategoriesScreenController> {
   @override
   Widget build(BuildContext context) {
     return bgWidget(Scaffold(
-      appBar: AppBar(
-        title: categories.text.color(whiteColor).fontFamily(bold).make(),
-      ),
-      body: Container(
-        padding: EdgeInsets.all(12),
-        child: GridView.builder(
-            shrinkWrap: true,
-            itemCount: 9,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, crossAxisSpacing: 8, mainAxisSpacing: 8, mainAxisExtent: 200),
-            itemBuilder: (context, index) {
-              return Column(children: [
-                Image.asset(
-                  categoriesImages[index],
-                  height: 120,
-                  width: 200,
-                  fit: BoxFit.cover,
-                ),
-                10.heightBox,
-                categoriesList[index].text.align(TextAlign.center).color(darkFontGrey).make()
-              ]).box.roundedSM.color(whiteColor).clip(Clip.antiAlias).outerShadowSm.make().onTap(() {
-                Get.to(CategoriesDetailsView(title: categoriesList[index]));
-              });
-            }),
-      ),
-    ));
+        appBar: AppBar(title: categories.text.color(whiteColor).fontFamily(bold).make()),
+        body: Container(
+            padding: const EdgeInsets.all(12),
+            child: GridView.builder(
+                shrinkWrap: true,
+                itemCount: 9,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, crossAxisSpacing: 8, mainAxisSpacing: 8, mainAxisExtent: 200),
+                itemBuilder: (context, index) {
+                  return Column(children: [
+                    Image.asset(categoriesImages[index], height: 120, width: 200, fit: BoxFit.cover),
+                    10.heightBox,
+                    categoriesList[index].text.align(TextAlign.center).color(darkFontGrey).make()
+                  ]).box.roundedSM.color(whiteColor).clip(Clip.antiAlias).outerShadowSm.make().onTap(() {
+                    Get.to(CategoriesDetailsView(title: categoriesList[index]));
+                  });
+                }))));
   }
 }

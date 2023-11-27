@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "864796309130",
+    "project_id": "seller-app-872a6",
+    "storage_bucket": "seller-app-872a6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:864796309130:android:a18e4814bf960b70bbdf73",
+        "android_client_info": {
+          "package_name": "com.example.sellerapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgeB3sCzk-boMIcl3IJWgUMNBxVsh9qVk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

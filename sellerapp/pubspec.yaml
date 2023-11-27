@@ -8,7 +8,13 @@ environment:
 dependencies: 
   cupertino_icons: ^1.0.2
   get: 4.6.6
-  velocity_x: ^4.1.1
+  velocity_x: ^4.1.2
+  firebase_auth: ^4.14.1
+  cloud_firestore: ^4.13.2
+  firebase_storage: ^11.5.2
+  firebase_messaging: ^14.7.5
+  flutter_local_notifications: ^16.2.0
+  firebase_core: ^2.23.0
   flutter: 
     sdk: flutter
 

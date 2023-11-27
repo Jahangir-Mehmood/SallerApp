@@ -18,3 +18,8 @@ const featuredtitle2 = [boysglasses, mobilephone, tshirts];
 
 const categoriesList = [womenClothing, menclothingFasion, compAccess, automobile, kidtoys, sports, jewelery, cellphone, furniture];
 const categoriesImages = [imgFc1, imgFc2, imgFc3, imgFc4, imgFc5, imgFc6, imgFc7, imgFc8, imgFc9];
+
+const itemDetailButonsList = [video, reviews, privacyPolicy, returnpolicy, supportpolicy];
+
+const profileButtonList = [wishlist, order, messages];
+const profileButtonIcons = [icWallet, icOrder, icMessages];
