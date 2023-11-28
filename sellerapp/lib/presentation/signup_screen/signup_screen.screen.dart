@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:sellerapp/consts/consts.dart';
 
+import '../../infrastructure/navigation/routes.dart';
 import '../../widget_common/applogo_widget.dart';
 import '../../widget_common/bg_widget.dart';
 import '../../widget_common/custom_textfield.dart';
@@ -23,10 +24,10 @@ class SignupScreenScreen extends GetView<SignupScreenController> {
             15.heightBox,
             Column(
               children: [
-                customTextField(hint: nameHint, title: name),
-                customTextField(hint: emailHint, title: email),
-                customTextField(hint: passwordHint, title: password),
-                customTextField(hint: passwordHint, title: retypePassword),
+                customTextField(controller: controller.name, hint: nameHint, title: name),
+                customTextField(controller: controller.email, hint: emailHint, title: email),
+                customTextField(controller: controller.password, hint: passwordHint, title: password),
+                customTextField(controller: controller.repassword, hint: passwordHint, title: retypePassword),
                 Align(
                   alignment: Alignment.topRight,
                   child: TextButton(
@@ -58,7 +59,31 @@ class SignupScreenScreen extends GetView<SignupScreenController> {
                 ),
                 5.heightBox,
                 Obx(() {
-                  return ourButton(color: controller.isChecked.value == true ? redColor : whiteColor, title: signUp, textColor: whiteColor, onPress: () {});
+                  return ourButton(
+                      color: controller.isChecked.value == true ? redColor : whiteColor,
+                      title: signUp,
+                      textColor: whiteColor,
+                      onPress: () async {
+                        if (controller.isChecked != false) {
+                          try {
+                            await controller
+                                .signupMethod(
+                              context: context,
+                              email: controller.email.text,
+                              password: controller.password.text,
+                            )
+                                .then((value) {
+                              return controller.storeUserData(controller.name.text, controller.password.text, controller.email.text);
+                            }).then((value) {
+                              VxToast.show(context, msg: loggedin);
+                              return Get.toNamed(Routes.HOME);
+                            });
+                          } catch (e) {
+                            auth.signOut();
+                            VxToast.show(context, msg: loggedout);
+                          }
+                        }
+                      });
                 }).box.width(context.screenWidth - 50).make(),
                 10.heightBox,
                 RichText(
