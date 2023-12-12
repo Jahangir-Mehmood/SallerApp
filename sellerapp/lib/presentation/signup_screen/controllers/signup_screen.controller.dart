@@ -11,10 +11,25 @@ class SignupScreenController extends GetxController {
   TextEditingController email = TextEditingController();
   TextEditingController repassword = TextEditingController();
   final isChecked = false.obs;
+  // Future<UserCredential?> signupMethod({email, password, context}) async {
+  //   UserCredential? userCredential;
+  //   try {
+  //     await auth.signInWithEmailAndPassword(email: email, password: password);
+  //   } on FirebaseAuthException catch (e) {
+  //     VxToast.show(context, msg: e.toString());
+  //   }
+  //   return userCredential;
+  // }
+
   Future<UserCredential?> signupMethod({email, password, context}) async {
     UserCredential? userCredential;
     try {
-      await auth.signInWithEmailAndPassword(email: email, password: password);
+      userCredential = await auth.createUserWithEmailAndPassword(email: email, password: password);
+
+      // Store user data only if sign up is successful
+      if (userCredential != null) {
+        storeUserData(name.text, password.text, email.text);
+      }
     } on FirebaseAuthException catch (e) {
       VxToast.show(context, msg: e.toString());
     }
@@ -34,21 +49,7 @@ class SignupScreenController extends GetxController {
     }
   }
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
-  }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
+  final RxInt count = 0.obs;
 
   void increment() => count.value++;
 }
